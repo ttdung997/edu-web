@@ -1,0 +1,13 @@
+<?php
+/*
+Title: Học viên
+Order: 60
+Flow: User Test
+*/
+
+  piklist('include_user_profile_fields', array(
+    'meta_boxes' => array(
+      'Personal Information'
+    )
+  ));
+?>

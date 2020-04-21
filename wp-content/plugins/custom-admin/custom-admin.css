@@ -1,0 +1,3 @@
+.form-table th, label, #your-profile label + a, #postcustomstuff table, #your-profile fieldset, #rightnow, div.dashboard-widget, #dashboard-widgets p.dashboard-widget-links, #replyrow #ed_reply_toolbar input {
+display:none !important;
+}

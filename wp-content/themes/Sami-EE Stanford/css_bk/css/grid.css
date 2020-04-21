@@ -1,0 +1,61 @@
+h4 {
+  margin-top: 25px;
+}
+.row {
+  margin-bottom: 20px;
+}
+.row .row {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+[class*="col-"] {
+  padding-top: 0px;
+  padding-bottom: 15px;
+}
+
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px){
+[class*="col-"] [class*="col-"]:first-child{
+	padding-left: 0px;
+}
+}
+
+/*
+@media (max-width: 991px){
+#seminar-block,
+#web-link-block{
+	display: block;
+	clear: both;
+	overflow: hidden;
+}
+}
+*/
+
+
+
+#related-article h2,
+#top-nav-sub-menu ul.vertical-nav > li.current-menu-parent > a{
+	font-weight: 500;
+}
+
+#quick-links-block .sidebar-module h2{
+	color: #333;
+}
+
+.block-views ul li img.img-thumbnail{
+	margin-right: 15px;
+}
+.date-repeat-instance {
+    display: inline-block;
+	color: #6C6C6C;
+	font-size: 12px;
+}
+
+#news-block{
+	/*padding-right: 6% !important;*/
+}

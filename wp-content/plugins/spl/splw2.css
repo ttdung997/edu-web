@@ -1,0 +1,240 @@
+/********************FRONT END CSS START***********************/
+.smart-post-list-main {
+    width: 100%;
+}
+
+.smart-post-list-main .smart-post-list-single-container {
+	float: left;
+}
+
+.smart-post-list-main {
+    padding: 10px 0 0;
+}
+
+.smart-post-list-main img {
+	float: left;
+	margin-right: 5px;
+}
+
+a.smart-post-list-title,
+a.smart-post-list-title:active,
+a.smart-post-list-title:visited {
+    line-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.smart-post-list-main p {
+    margin: 10px 0px 10px 10px;
+padding: 0;
+text-align: justify;
+font-size: 13px;
+}
+
+.smart-post-list-main ,
+.smart-post-list-main li {
+	list-style: none;
+	float: left;
+
+}
+
+.smart-post-list-main li {
+    margin: 0 0 5px;
+}
+
+/*Until v1.1 this was .smart-post-list-separator li*/
+.smart-post-list-delimiter {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #CCCCCC;
+	width: 100%;
+}
+
+.smart-post-list-main .image-top-of-excerpt {
+	float: left;
+	*float: none; /*IE7 hack*/
+	clear: both;
+}
+
+.smart-post-list-main .text-top-of-excerpt {
+	float: left;
+	*float: none; /*IE7 hack*/
+}
+
+.smart-post-list-main .image-left-of-excerpt {
+	float: left;
+	
+}
+
+.smart-post-list-main .text-left-of-excerpt {
+	display: table-row;
+	*display: inline-block; /*IE7 fix*/
+}
+
+.smart-post-list-main .image-right-of-excerpt {
+	float: right;
+	display: inline;
+}
+
+.smart-post-list-main .image-right-of-excerpt img {
+	margin-right: 0;
+	margin-left: 5px;
+}
+
+.smart-post-list-main .text-right-of-excerpt {
+	display: table-row;
+	*display: inline-block; /*IE7 fix*/
+}
+
+.smart-post-list-main .image-right-in-excerpt {
+	float: right;
+}
+
+.smart-post-list-main .image-right-in-excerpt img {
+	float: right;
+	margin-right: 0;
+	margin-left: 5px;
+}
+
+.smart-post-list-main .text-right-in-excerpt {
+	float: right;
+}
+
+.smart-post-list-main .text-right-in-excerpt h1,
+.smart-post-list-main .text-right-in-excerpt h2,
+.smart-post-list-main .text-right-in-excerpt h3,
+.smart-post-list-main .text-right-in-excerpt h4,
+.smart-post-list-main .text-right-in-excerpt h5,
+.smart-post-list-main .text-right-in-excerpt h6,
+.smart-post-list-main .text-left-in-excerpt h1,
+.smart-post-list-main .text-left-in-excerpt h2,
+.smart-post-list-main .text-left-in-excerpt h3,
+.smart-post-list-main .text-left-in-excerpt h4,
+.smart-post-list-main .text-left-in-excerpt h5,
+.smart-post-list-main .text-left-in-excerpt h6{
+	clear: none;
+}
+
+.smart-post-list-main .image-left-in-excerpt {
+	float: left;
+}
+
+.smart-post-list-main .image-left-in-excerpt img {
+	float: left;
+	margin-right: 0;
+	margin-right: 5px;
+}
+
+.smart-post-list-main .text-left-in-excerpt {
+}
+
+/* FRONT END CUSTOM CSS */
+
+/*Custom style for the witget's container*/
+.smart-post-list {
+
+}
+
+/*Custom style for the witget's title*/
+.smart-post-list h3.widget-title {
+
+}
+
+/*Custom style for single post container in the list of posts*/
+.smart-post-list-main .smart-post-list-single-container {
+//margin-bottom: 15px;
+//list-style: url(http://luyenthidaihocsupham.edu.vn/wp-content/uploads/2015/12/star_blue.png);
+padding-top: 20px;
+}
+
+/*Custom style for the post's image*/
+.smart-post-list-main .smart-post-list-image {
+	
+}
+
+/*Custom style for post's title*/
+a.smart-post-list-title,
+a.smart-post-list-title:active,
+a.smart-post-list-title:visited {
+color: #148B00!important;
+line-height: 19px;
+}
+}
+
+a.smart-post-list-title:hover {
+
+}
+
+/*Custom style for post's date*/
+.smart-post-list-main .smart-post-list-date {
+
+}
+
+/*Custom style for post's comments*/
+.smart-post-list-main .smart-post-list-comments {
+
+}
+
+/*Custom style for post's paragraphs*/
+.smart-post-list-main p {
+
+}
+
+/*Custom style for post's delimiter*/
+/*Until v1.1 this was .smart-post-list-separator li*/
+.smart-post-list-delimiter {
+
+}
+
+.smart-post-list-single-container .text-top-of-excerpt p,
+.smart-post-list-single-container .image-top-of-excerpt a {
+	margin: 0 15px 0 0;
+}
+/********************FRONT END CSS END***********************/
+
+/********************ADMIN CSS START***********************/
+.checklist {
+    border: 1px solid #CCCCCC;
+	border-radius: 6px;
+    max-height: 10em;
+    list-style: none outside none;
+    overflow: auto;
+	width: auto;
+    padding: 5px;
+}
+
+fieldset .checklist {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+.checklist li {
+    background: none repeat scroll 0 0;
+    padding-left: 0;
+}
+
+.checklist label {
+    display: block;
+    padding: 0 0.2em 0 25px;
+    text-indent: -25px;
+}
+
+.post-delimiter-container {
+	/*width: 100%;*/
+	float: left;
+}
+
+.smart-post-lists-admin-fieldset {
+	border: solid 1px #CCCCCC;
+	padding: 10px;
+	border-radius: 6px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.smart-post-lists-admin-fieldset legend {
+	margin-left: 10px;
+	cursor: pointer;
+}
+/********************ADMIN CSS END***********************/

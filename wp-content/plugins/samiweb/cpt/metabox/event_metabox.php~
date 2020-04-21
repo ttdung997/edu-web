@@ -1,0 +1,25 @@
+<?php
+/**
+ * Registering meta boxes
+ *
+ * All the definitions of meta boxes are listed below with comments.
+ * Please read them CAREFULLY.
+ *
+ * You also should read the changelog to know what has been changed before updating.
+ *
+ * For more information, please visit:
+ * @link http://www.deluxeblogtips.com/meta-box/
+ */
+
+/********************* META BOX DEFINITIONS ***********************/
+
+/**
+ * Prefix of meta keys (optional)
+ * Use underscore (_) at the beginning to make keys hidden
+ * Alt.: You also can make prefix empty to disable it
+ */
+// Better has an underscore as last sign
+
+
+
+?>

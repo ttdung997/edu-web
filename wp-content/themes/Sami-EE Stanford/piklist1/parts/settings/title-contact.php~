@@ -1,0 +1,105 @@
+<?php
+/*
+Title: Học hàm-Học vị
+Setting: sami-settings
+Tab: Học hàm-Học vị
+Tab Order: 50
+Order: 2
+*/
+
+piklist('field', array(
+	'type' => 'group'
+	,'label' => __('Học hàm')
+	,'field' => 'hocham_information'
+	,'add_more' => true
+	,'fields' => array(
+			array(
+				'type' => 'text'
+				,'field' => 'ten_hoc_ham'
+				,'label' => 'Tên học hàm'
+				,'description' => "Bắt buộc phải nhập."
+				,'columns' => 6
+				,'attributes' => array(
+				 'class' => 'regular-text'
+				)
+				,'required' => true
+			)	
+			,array(
+				'type' => 'text'
+				,'field' => 'ma_hoc_ham'
+				,'label' => 'Viết tắt'
+				,'description' => "Bắt buộc phải nhập."
+				,'columns' => 3
+				,'attributes' => array(
+				 'class' => 'small-text'
+				)
+				,'required' => true
+			)									
+		)
+	)
+);
+
+piklist('field', array(
+	'type' => 'group'
+	,'label' => __('Học hàm')
+	,'field' => 'hocvi_information'
+	,'add_more' => true
+	,'fields' => array(	
+			array(
+				'type' => 'text'
+				,'field' => 'ten_hoc_vi'
+				,'label' => 'Tên học vị'
+				,'description' => "Bắt buộc phải nhập."
+				,'columns' => 6
+				,'attributes' => array(
+				 'class' => 'regular-text'
+				)
+				,'required' => true
+			)
+			,array(
+				'type' => 'text'
+				,'field' => 'ma_hoc_vị'
+				,'label' => 'Mã học vị'
+				,'description' => "Bắt buộc phải nhập."
+				,'columns' => 3
+				,'attributes' => array(
+				 'class' => 'small-text'
+				)
+				,'required' => true
+			)									
+		)
+	)
+);
+
+piklist('field', array(
+	'type' => 'group'
+	,'label' => __('Học hàm')
+	,'field' => 'hocvi_information'
+	,'add_more' => true
+	,'fields' => array(
+			array(
+				'type' => 'text'
+				,'field' => 'ma_hoc_vị'
+				,'label' => 'Mã học vị'
+				,'description' => "Bắt buộc phải nhập."
+				,'columns' => 3
+				,'attributes' => array(
+				 'class' => 'small-text'
+				)
+				,'required' => true
+			)
+			,array(
+				'type' => 'text'
+				,'field' => 'ten_hoc_vi'
+				,'label' => 'Tên học vị'
+				,'description' => "Bắt buộc phải nhập."
+				,'columns' => 6
+				,'attributes' => array(
+				 'class' => 'regular-text'
+				)
+				,'required' => true
+			)									
+		)
+	)
+);
+?>

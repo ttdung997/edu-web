@@ -1,0 +1,70 @@
+<?php
+function document_post_type() {
+	$labels = array(
+		'name'               => _x( 'Bài giảng - tài liệu', 'post type general name' ),
+		'singular_name'      => _x( 'Bài giảng - tài liệu', 'post type singular name' ),
+		'add_new'            => _x( 'Thêm tài liệu', 'book' ),
+		'add_new_item'       => __( 'Thêm tài liệu' ),
+		'edit_item'          => __( 'Sửa tài liệu' ),
+		'new_item'           => __( 'Tài liệu mới' ),
+		'all_items'          => __( 'Tất cả tài liệu' ),
+		'view_item'          => __( 'Xem tài liệu' ),
+		'search_items'       => __( 'Tìm kiếm tài liệu' ),
+		'not_found'          => __( 'Không tìm thấy tài liệu nào' ),
+		'not_found_in_trash' => __( 'Không có tài liệu nào trong thùng rác' ), 
+		'parent_item_colon'  => '',
+		'menu_name'          => 'Bài giảng - tài liệu'
+	);
+	$args = array(
+		'labels'        => $labels,
+		'description'   => 'Holds our products and product specific data',
+		'public'        => true,
+		'menu_position' => 5,
+		'menu_icon' => 'media-text',
+		'supports'      => array( ''),
+		'has_archive'   => true,
+		'capabilities' => array(
+			'edit_post' => 'edit_document',
+			'read_post' => 'read_document',
+			'delete_post' => 'delete_document',
+			'read_others_posts' => 'read_others_documents',
+			
+			'edit_posts' => 'edit_documents',
+			'edit_others_posts' => 'edit_others_documents',
+			'edit_private_posts' => 'edit_private_documents',
+			'edit_published_posts' => 'edit_published_documents',
+							
+			'publish_posts' => 'publish_documents',
+			'read_private_posts' => 'read_private_documents',
+			'delete_posts' => 'delete_documents',
+			'delete_private_posts' => 'delete_private_documents',
+			'delete_published_posts' => 'delete_published_documents',
+			'delete_others_posts' => 'delete_others_documents',
+		),
+	);
+	register_post_type( 'document', $args );	
+}
+
+add_action( 'init', 'document_post_type' );
+
+function add_document_caps() {
+    // gets the administrator role
+    $admins = get_role( 'administrator' );
+
+    $admins->add_cap( 'edit_document' ); 
+    $admins->add_cap( 'edit_documents' ); 
+    $admins->add_cap( 'edit_others_documents' ); 
+    $admins->add_cap( 'publish_documents' );
+    $admins->add_cap( 'edit_published_documents' ); 
+    $admins->add_cap( 'read_document' ); 
+    $admins->add_cap( 'read_private_documents' ); 
+    $admins->add_cap( 'delete_document' );
+    $admins->add_cap( 'delete_published_documents' );
+    $admins->add_cap( 'delete_others_documents' );
+    
+    $admins->add_cap( 'manage_document_tags' );
+    $admins->add_cap( 'edit_document_tags' );
+    $admins->add_cap( 'delete_document_tags' );
+    $admins->add_cap( 'assign_document_tags' );  
+}
+?>

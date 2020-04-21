@@ -1,0 +1,30 @@
+<?php
+/*
+Title: Cấu hình email
+Setting: sami-settings
+Tab: Validate
+Tab Order: 60
+Order: 30
+*/
+
+  piklist('field', array(
+    'type' => 'text'
+    ,'field' => 'pending_notice_email'
+    ,'label' => 'Email nhận thông báo có bài viết chờ duyệt'
+    ,'description' => "Bắt buộc phải nhập. Bấm vào dấu (+) để thêm địa chỉ email."
+    ,'attributes' => array(
+      'class' => 'large-text'
+    )
+    ,'required' => true
+    ,'add_more' => true
+    ,'validate' => array(
+      array(
+        'type' => 'email'
+      )
+      ,array(
+        'type' => 'email_domain'
+      )
+    ) 
+    ,'columns' => 12  
+  ));
+?>

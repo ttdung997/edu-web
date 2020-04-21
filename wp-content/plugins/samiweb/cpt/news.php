@@ -1,0 +1,147 @@
+<?php
+function new_post_type() {
+	$labels = array(
+		'name'               => _x( 'Tin tức', 'post type general name' ),
+		'singular_name'      => _x( 'Tin tức', 'post type singular name' ),
+		'add_new'            => _x( 'Viết tin mới', 'book' ),
+		'add_new_item'       => __( 'Viết tin mới' ),
+		'edit_item'          => __( 'Sửa tin' ),
+		'new_item'           => __( 'Viết tin mới' ),
+		'all_items'          => __( 'Tất cả tin tức' ),
+		'view_item'          => __( 'Xem tin' ),
+		'search_items'       => __( 'Tìm kiếm tin tức' ),
+		'not_found'          => __( 'Không tìm thấy tin nào' ),
+		'not_found_in_trash' => __( 'Không có tin nào nào trong thùng rác' ), 
+		'parent_item_colon'  => '',
+		'menu_name'          => 'Tin tức'
+	);
+	$args = array(
+		'labels'        => $labels,
+		'description'   => 'Đăng các tin tức của viện',
+		'public'        => true,
+		'menu_position' => 5,
+		'menu_icon' => 'dashicons-edit',
+		'map_meta_cap' => true,
+		'rewrite' => array('slug' => 'tin-tuc'),
+		'supports'      => array('title', 'excerpt', 'editor', 'thumbnail'),
+		'has_archive'   => true,
+		'capabilities' => array(
+			'edit_post' => 'edit_new',
+			'read_post' => 'read_new',
+			'delete_post' => 'delete_new',
+			'read_others_posts' => 'read_others_news',
+			
+			'edit_posts' => 'edit_news',
+			'edit_others_posts' => 'edit_others_news',
+			'edit_private_posts' => 'edit_private_news',
+			'edit_published_posts' => 'edit_published_news',
+							
+			'publish_posts' => 'publish_news',
+			'read_private_posts' => 'read_private_news',
+			'delete_posts' => 'delete_news',
+			'delete_private_posts' => 'delete_private_news',
+			'delete_published_posts' => 'delete_published_news',
+			'delete_others_posts' => 'delete_others_news',
+		),
+	);
+	register_post_type( 'tin-tuc', $args );
+}
+
+add_action( 'init', 'new_post_type' );
+
+function my_taxonomies_new() {
+	$labels = array(
+		'name'              => _x( 'Loại tin', 'taxonomy general name' ),
+		'singular_name'     => _x( 'Loại tin', 'taxonomy singular name' ),
+		'search_items'      => __( 'Tìm kiếm loại tin' ),
+		'all_items'         => __( 'Tất cả loại tin' ),
+		'parent_item'       => __( 'Danh mục cha' ),
+		'parent_item_colon' => __( 'Danh mục cha:' ),
+		'edit_item'         => __( 'Sửa loại tin' ), 
+		'update_item'       => __( 'Cập nhật loại tin' ),
+		'add_new_item'      => __( 'Thêm loại tin' ),
+		'new_item_name'     => __( 'Thêm loại tin' ),
+		'menu_name'         => __( 'Phân loại tin' ),
+	);
+	$args = array(
+		'labels' => $labels,
+		'hierarchical' => true,
+		'capabilities' => array(
+            'manage_terms' => 'manage_new_tags',
+            'edit_terms' => 'edit_new_tags',
+            'delete_terms' => 'delete_new_tags',
+            'assign_terms' => 'assign_new_tags',
+        ),
+		
+	  'show_admin_column' => true,
+      'show_ui' => true,
+      'rewrite' => array('slug' => 'loai-tin'),		
+	);
+	register_taxonomy( 'loai-tin', 'tin-tuc', $args );
+	
+	//add_new_caps();
+}
+
+add_action( 'init', 'my_taxonomies_new', 0 );
+
+add_new_caps();
+
+function add_new_caps() {
+    // gets the administrator role
+    $admins = get_role( 'administrator' );
+
+	$admins->remove_cap( 'manage-tin-tuc' );
+	$admins->add_cap( 'manage_tin-tuc' );
+    $admins->add_cap( 'edit_new' ); 
+    $admins->add_cap( 'edit_news' ); 
+    $admins->add_cap( 'edit_others_news' ); 
+    $admins->add_cap( 'publish_news' );
+    $admins->add_cap( 'edit_published_news' ); 
+    $admins->add_cap( 'read_new' ); 
+    $admins->add_cap( 'read_private_news' ); 
+    $admins->add_cap( 'delete_new' );
+    $admins->add_cap( 'delete_published_news' );
+    $admins->add_cap( 'delete_others_news' );
+    
+    $admins->add_cap( 'manage_new_tags' );
+    $admins->add_cap( 'edit_new_tags' );
+    $admins->add_cap( 'delete_new_tags' );
+    $admins->add_cap( 'assign_new_tags' ); 
+	
+    $content_manager = get_role( 'content-manager' );
+
+	$content_manager->remove_cap( 'manage-tin-tuc' );
+	$content_manager->add_cap( 'manage_tin-tuc' );
+    $content_manager->add_cap( 'edit_new' ); 
+    $content_manager->add_cap( 'edit_news' ); 
+    $content_manager->add_cap( 'edit_others_news' ); 
+    $content_manager->add_cap( 'publish_news' );
+    $content_manager->add_cap( 'edit_published_news' ); 
+    $content_manager->add_cap( 'read_new' ); 
+    $content_manager->add_cap( 'read_private_news' ); 
+    $content_manager->add_cap( 'delete_new' );
+    $content_manager->add_cap( 'delete_published_news' );
+    $content_manager->add_cap( 'delete_others_news' );
+    
+    $content_manager->add_cap( 'manage_new_tags' );
+    $content_manager->add_cap( 'edit_new_tags' );
+    $content_manager->add_cap( 'delete_new_tags' );
+    $content_manager->add_cap( 'assign_new_tags' );	
+	
+    $news_manager = get_role( 'news-manager' );
+
+	$news_manager->add_cap( 'manage_tin-tuc' );
+    $news_manager->add_cap( 'edit_new' ); 
+    $news_manager->add_cap( 'edit_news' ); 
+    $news_manager->add_cap( 'edit_others_news' ); 
+    $news_manager->add_cap( 'publish_news' );
+    $news_manager->add_cap( 'edit_published_news' ); 
+    $news_manager->add_cap( 'read_new' ); 
+    $news_manager->add_cap( 'read_private_news' ); 
+    $news_manager->add_cap( 'delete_new' );
+    $news_manager->add_cap( 'delete_published_news' );
+    $news_manager->add_cap( 'delete_others_news' );
+	
+    $news_manager->add_cap( 'assign_new_tags' );  	
+}
+?>

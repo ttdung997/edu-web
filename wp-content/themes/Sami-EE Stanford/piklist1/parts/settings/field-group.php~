@@ -1,0 +1,50 @@
+<?php
+/*
+Title: Các bộ phận
+Setting: sami-settings
+Tab: Groups
+Tab Order: 40
+Order: 30
+*/
+
+piklist('field', array(
+    'type' => 'group'
+    ,'field' => 'sami_sections_setting'
+    ,'add_more' => true
+    ,'label' => 'Thông tin các Bộ phận'
+    ,'description' => 'Nhập tên Bộ phận và người phụ trách'
+    ,'fields' => array(
+      array(
+        'type' => 'text'
+        ,'field' => 'section_name'
+        ,'label' => 'Tên bộ phận'
+        ,'columns' => 12
+      )
+      ,array(
+        'type' => 'text'
+        ,'field' => 'section_head'
+        ,'label' => 'Người phụ trách bộ phận'
+        ,'columns' => 12
+      )
+      ,array(
+        'type' => 'text'
+        ,'field' => 'email_address'
+        ,'label' => 'Email:'
+        ,'columns' => 5
+      )
+      ,array(
+        'type' => 'text'
+        ,'field' => 'phone_number'
+        ,'label' => 'Điện thoại cơ quan'
+        ,'columns' => 3
+      )
+      ,array(
+        'type' => 'text'
+        ,'field' => 'mobile_phone'
+        ,'label' => 'Mobile'
+        ,'template' => 'post_meta'
+        ,'columns' => 12
+      )
+    )
+  ));  
+?>

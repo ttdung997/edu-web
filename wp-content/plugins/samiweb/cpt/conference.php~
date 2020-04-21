@@ -1,0 +1,71 @@
+<?php
+
+function conference_post_type() {
+	$labels = array(
+		'name'               => _x( 'Tên báo cáo', 'post type general name' ),
+		'singular_name'      => _x( 'Tên báo cáo', 'post type singular name' ),
+		'add_new'            => _x( 'Thêm báo cáo', 'book' ),
+		'add_new_item'       => __( 'Thêm báo cáo' ),
+		'edit_item'          => __( 'Sửa' ),
+		'new_item'           => __( 'Thêm báo cáo' ),
+		'all_items'          => __( 'Tất cả báo cáo' ),
+		'view_item'          => __( 'Xem báo cáo' ),
+		'search_items'       => __( 'Tìm kiếm báo cáo' ),
+		'not_found'          => __( 'Không tìm thấy báo cáo' ),
+		'not_found_in_trash' => __( 'Không tìm thấy báo cáo' ), 
+		'parent_item_colon'  => '',
+		'menu_name'          => 'Báo cáo hội nghị (conference)'
+	);
+	$args = array(
+		'labels'        => $labels,
+		'description'   => 'Báo cáo tại các hội nghị, hội thảo',
+		'public'        => true,
+		'menu_position' => 5,
+		'supports'      => array(''),
+		'rewrite'       => array( 'slug' => 'bao-cao-hoi-nghi' ),
+		'has_archive'   => true,
+		'capability_type' => 'conference',
+		'capabilities' => array(
+				'edit_post' => 'edit_conference',
+				'read_post' => 'read_conference',
+				'delete_post' => 'delete_conference',
+				'read_others_posts' => 'read_others_conferences',
+				
+				'edit_posts' => 'edit_conferences',
+				'edit_others_posts' => 'edit_others_conferences',
+				'edit_private_posts' => 'edit_private_conferences',
+				'edit_published_posts' => 'edit_published_conferences',
+								
+				'publish_posts' => 'publish_conferences',
+				'read_private_posts' => 'read_private_conferences',
+				'delete_posts' => 'delete_conferences',
+				'delete_private_posts' => 'delete_private_conferences',
+				'delete_published_posts' => 'delete_published_conferences',
+				'delete_others_posts' => 'delete_others_conferences',
+		),
+	);
+	register_post_type( 'conference', $args );	
+}
+add_action( 'init', 'conference_post_type' );
+
+function add_conference_caps() {
+    // gets the administrator role
+    $admins = get_role( 'administrator' );
+
+    $admins->add_cap( 'edit_conference' ); 
+    $admins->add_cap( 'edit_conferences' ); 
+    $admins->add_cap( 'edit_others_conferences' ); 
+    $admins->add_cap( 'publish_conferences' );
+    $admins->add_cap( 'edit_published_conferences' ); 
+    $admins->add_cap( 'read_conference' ); 
+    $admins->add_cap( 'read_private_conferences' ); 
+    $admins->add_cap( 'delete_conference' );
+    $admins->add_cap( 'delete_published_conferences' );
+    $admins->add_cap( 'delete_others_conferences' );
+    
+    $admins->add_cap( 'manage_conference_tags' );
+    $admins->add_cap( 'edit_conference_tags' );
+    $admins->add_cap( 'delete_conference_tags' );
+    $admins->add_cap( 'assign_conference_tags' );  
+}
+?>

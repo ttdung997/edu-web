@@ -1,0 +1,72 @@
+<?php
+/*
+Title: Cấu hình email
+Setting: sami-settings
+Tab: Cấu hình email
+Tab Order: 30
+Order: 3
+*/
+
+  piklist('field', array(
+    'type' => 'text'
+    ,'field' => 'pending_notice_email'
+    ,'label' => 'Email nhận thông báo có bài viết chờ duyệt'
+    ,'description' => "Bắt buộc phải nhập. Bấm vào dấu (+) để thêm địa chỉ email."
+    ,'attributes' => array(
+      'class' => 'large-text'
+    )
+    ,'required' => true
+    ,'add_more' => true
+    ,'validate' => array(
+      array(
+        'type' => 'email'
+      )
+      ,array(
+        'type' => 'email_domain'
+      )
+    ) 
+    ,'columns' => 12  
+  ));
+  
+  piklist('field', array(
+    'type' => 'text'
+    ,'field' => 'covanhoctap_email'
+    ,'label' => 'Email nhận hỏi đáp cố vấn học tập'
+    ,'description' => "Bắt buộc phải nhập. Bấm vào dấu (+) để thêm địa chỉ email."
+    ,'attributes' => array(
+      'class' => 'large-text'
+    )
+    ,'required' => true
+    ,'add_more' => true
+    ,'validate' => array(
+      array(
+        'type' => 'email'
+      )
+      ,array(
+        'type' => 'email_domain'
+      )
+    ) 
+    ,'columns' => 12  
+  )); 
+  
+  piklist('field', array(
+    'type' => 'text'
+    ,'field' => 'tuvantuyensinh_email'
+    ,'label' => 'Email nhận hỏi đáp Tư vấn tuyển sinh'
+    ,'description' => "Bắt buộc phải nhập. Bấm vào dấu (+) để thêm địa chỉ email."
+    ,'attributes' => array(
+      'class' => 'large-text'
+    )
+    ,'required' => true
+    ,'add_more' => true
+    ,'validate' => array(
+      array(
+        'type' => 'email'
+      )
+      ,array(
+        'type' => 'email_domain'
+      )
+    ) 
+    ,'columns' => 12  
+  ));   
+?>

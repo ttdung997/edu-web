@@ -1,0 +1,176 @@
+<?php
+/**
+ * Registering meta boxes
+ *
+ * All the definitions of meta boxes are listed below with comments.
+ * Please read them CAREFULLY.
+ *
+ * You also should read the changelog to know what has been changed before updating.
+ *
+ * For more information, please visit:
+ * @link http://www.deluxeblogtips.com/meta-box/
+ */
+
+/********************* META BOX DEFINITIONS ***********************/
+
+/**
+ * Prefix of meta keys (optional)
+ * Use underscore (_) at the beginning to make keys hidden
+ * Alt.: You also can make prefix empty to disable it
+ */
+// Better has an underscore as last sign
+$prefix = 'SAMI_CONFERENCE_';
+
+global $year_array;
+$current_year = Date("Y");
+for ($i=$current_year; $i >= 1956; $i--){
+	$year_array["$i"] = $i;
+}
+
+global $conference_meta_boxes;
+$conference_meta_boxes = array();
+
+$conference_meta_boxes[] = array(
+	'title' => 'Thông tin báo cáo',
+	'id' => 'conference_content',
+	// Post types, accept custom post types as well - DEFAULT is array('post'). Optional.
+	'pages' => array('conference'), //'post', 'page' ),
+	'context' =>'normal',
+	'priority' => 'low',
+	'fields' => array(
+		// text
+		array(
+			'name' => 'Tên báo cáo',
+			'id'   => "{$prefix}report_title",
+			'desc'  => 'Nhập tên báo cáo. Không để dấu chấm (.) cuối câu',
+			'type' => 'text',
+			'class' => 'full-width',
+			'placeholder' => 'Tên báo cáo',
+		),	
+		// text
+		array(
+			'name' => 'Danh sách tác giả',
+			'id'   => "{$prefix}authors",
+			'desc'  => 'Danh sách tác giả, theo đúng trình tự bài báo',
+			'type' => 'text',
+			'class' => 'full-width',
+			'placeholder' => 'Danh sách tác giả',
+		),
+		// text
+		array(
+			'name' => 'Tên hội nghị',
+			'id'   => "{$prefix}conference_title",
+			'desc'  => 'Nhập tên hội nghị. Không để dấu chấm (.) cuối câu',
+			'type' => 'text',
+			'class' => 'full-width',
+			'placeholder' => 'Tên hội nghị',
+		),	
+		// text
+		array(
+			'name' => 'Địa điểm hội nghị',
+			'id'   => "{$prefix}location",
+			'desc'  => 'Nhập địa điểm tổ chức hội nghị. Không để dấu chấm (.) cuối câu. Ví dụ: Hanoi, Vietnam; Tokyo, Japan',
+			'type' => 'text',
+			'class' => 'full-width',
+			'placeholder' => 'Địa điểm tổ chức hội nghị',
+		),
+		//SELECT BOX
+		array(
+			'name'     => 'Năm tổ chức',
+			'id'       => "{$prefix}held_year",
+			'desc'  => 'Chọn năm tổ chức',
+			'type'     => 'select',
+			// Array of 'value' => 'Label' pairs for select box
+			'options'  => $year_array,
+			// Select multiple values, optional. Default is false.
+			'multiple' => false,
+			'clone' => false,
+		),
+		// text
+		array(
+			'name' => 'Ngày tháng tổ chức',
+			'id'   => "{$prefix}date_month",
+			'desc'  => 'Nhập khoảng thời gian tổ chức hội nghị. Không để dấu chấm (.) cuối câu. Ví dụ: 11 - 17/12; November 11 - 17',
+			'type' => 'text',
+			'placeholder' => 'Thời gian diễn ra hội nghị'
+		),
+		// text
+		array(
+			'name' => 'Trang trong kỷ yếu (proceeding)',
+			'id'   => "{$prefix}pages",
+			'desc'  => 'Nhập trang trong kỷ yếu (proceeding). Không để dấu chấm (.) cuối câu. Ví dụ: 150 - 155',
+			'type' => 'text',
+			'size' => 10,
+		),
+		// text
+		array(
+			'name' => 'URL',
+			'id'   => "{$prefix}url",
+			'desc'  => 'Nhập vào URL tham khảo của bài báo nếu có.',
+			'type' => 'text',
+			'class' => 'full-width',
+			'placeholder' => 'URL tham chiếu',
+		),
+		// FILE UPLOAD
+		array(
+			'name' => 'File đính kèm',
+			'desc'  => 'Upload file tóm tắt hoặc toàn văn bài báo (nếu có)',
+			'id'   => "{$prefix}file",
+			'type' => 'file_advanced',
+		)
+	),
+	'validation' => array(
+		'rules' => array(
+			"{$prefix}report_title" => array(
+				'required'  => true,
+			),
+			"{$prefix}conference_title" => array(
+				'required' => true,
+			),
+			"{$prefix}authors" => array(
+				'required' => true,
+			),
+			"{$prefix}location" => array(
+				'required' => true,
+			),
+		),
+		// optional override of default jquery.validate messages
+		'messages' => array(
+			"{$prefix}report_title" => array(
+				'required'  => __( 'Bạn phải nhập tên báo cáo', 'rwmb' ),
+			),
+			"{$prefix}conference_title" => array(
+				'required'  => __( 'Bạn phải nhập tên hội nghị', 'rwmb' ),
+			),			
+			"{$prefix}authors" => array(
+				'required'  => __( 'Bạn phải nhập danh sách tác giả', 'rwmb' ),
+			),			
+			"{$prefix}location" => array(
+				'required'  => __( 'Bạn phải nhập địa điểm tổ chức hội nghị', 'rwmb' ),
+			),
+		)
+	)	
+);
+/********************* META BOX REGISTERING ***********************/
+
+/**
+ * Register meta boxes
+ *
+ * @return void
+ */
+function EDUBOX_CONFERENCE_register_meta_boxes()
+{
+	// Make sure there's no errors when the plugin is deactivated or during upgrade
+	if ( !class_exists( 'RW_Meta_Box' ) )
+		return;
+
+	global $conference_meta_boxes;
+	foreach ( $conference_meta_boxes as $conference_meta_box )
+	{
+		new RW_Meta_Box( $conference_meta_box );
+	}
+}
+// Hook to 'admin_init' to make sure the meta box class is loaded before
+// (in case using the meta box class in another plugin)
+// This is also helpful for some conditionals like checking page template, categories, etc.
+add_action( 'admin_init', 'EDUBOX_CONFERENCE_register_meta_boxes' );
